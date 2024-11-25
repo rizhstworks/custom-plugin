@@ -1,0 +1,31 @@
+<?php
+/**
+ * Plugin Name: Portfolio Custom Post Type
+ * Description: A custom plugin to create a Portfolio post type.
+ * Version: 1.0
+ * Author: M. Rizwan Hasrat
+ */
+
+function create_portfolio_cpt() {
+    $labels = array(
+        'name' => 'Portfolios',
+        'singular_name' => 'Portfolio',
+        'add_new' => 'Add New Portfolio',
+        'all_items' => 'All Portfolios',
+        'edit_item' => 'Edit Portfolio',
+        'new_item' => 'New Portfolio',
+        'view_item' => 'View Portfolio',
+        'search_items' => 'Search Portfolios',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'rewrite' => array('slug' => 'portfolios'),
+    );
+
+    register_post_type('portfolio', $args);
+}
+add_action('init', 'create_portfolio_cpt');
